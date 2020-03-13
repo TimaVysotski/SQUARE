@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-
+.vscode
 # Xcode
 #
 build/
@@ -20,22 +20,26 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-
+**/key
+**/android.jks
 # Android/IntelliJ
 #
 build/
+cert/
 .idea
 .gradle
 local.properties
 *.iml
 
 # node.js
-#
++branch.json
+*/gradle.properties
 node_modules/
 npm-debug.log
 yarn-error.log
 
 # BUCK
+.env
 buck-out/
 \.buckd/
 *.keystore
@@ -54,6 +58,6 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
-
+.git1
 # CocoaPods
 /ios/Pods/
