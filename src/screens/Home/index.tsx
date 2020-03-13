@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react';
 import { SafeAreaView, Text } from 'react-native';
+import i18n from '../../config';
 
 const Home = (): ReactElement => (
   <SafeAreaView>
-    <Text>Home</Text>
+    <Text>{i18n.t('home.title')}</Text>
   </SafeAreaView>
 );
 
