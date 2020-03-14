@@ -2,5 +2,10 @@
   "appName": "SQUARE",
   "home": {
     "title": "Home"
+  },
+  "switchLabels": {
+    "color": "Color",
+    "figure": "Figure",
+    "number": "Number"
   }
 }
