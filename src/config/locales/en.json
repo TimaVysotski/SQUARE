@@ -11,5 +11,8 @@
   "sliderLabels": {
     "commandsAmount": "Amount of commands: {{amount}}",
     "playbackIntervals": "Playback intervals: {{speed}}"
+  },
+  "button": {
+    "play": "Play"
   }
 }

@@ -8,6 +8,7 @@ import Card from '../../container/components/view/Card';
 import Container from '../../container/components/view/Container';
 import Content from '../../container/components/view/Content';
 import CustomView from '../../container/components/view/CustomView';
+import Button from '../../container/components/button';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import sizes from '../../theme/sizes';
@@ -24,7 +25,6 @@ const Home = (): ReactElement => {
       <Content flex={1}>
         <Label
           mt={2}
-          mb={2}
           ml={3}
           text={i18n.t('appName')}
           fontSize={fonts.HEADER_LABEL}
@@ -230,7 +230,22 @@ const Home = (): ReactElement => {
               </CustomView>
             </CustomView>
           </Card>
-          <Card flex={1} color={colors.CARD_SECONDARY} mt mb={2} ml={3} mr={3} />
+          <Card
+            mt
+            mb={2}
+            ml={3}
+            mr={3}
+            flex={1}
+            color={colors.CARD_SECONDARY}
+          >
+            <CustomView mt mb>
+              <Button
+                text={i18n.t('button.play')}
+                color={colors.LABEL_SECONDARY}
+                fontSize={fonts.BUTTON_LABEL}
+              />
+            </CustomView>
+          </Card>
         </CustomView>
       </Content>
     </Container>
