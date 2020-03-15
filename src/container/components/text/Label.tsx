@@ -8,6 +8,7 @@ interface LabelProps {
   text?: string;
   color?: string;
   fontSize?: number;
+  textAlign?: string;
   fontWeight?: string;
   letterSpasing?: number;
   mt?: number | boolean;
@@ -18,6 +19,7 @@ interface LabelProps {
 
 const StyledText = styled(Text)`
   justifyContent: center;
+  ${({ textAlign }: LabelProps): string => `text-align: ${textAlign}`};
   color: ${({ color = colors.LABEL_PRIMARY }: LabelProps): string => color};
   font-size: ${({ fontSize = 0 }: LabelProps): number => fontSize};
   font-weight: ${({ fontWeight = 'bold' }: LabelProps): string => fontWeight};

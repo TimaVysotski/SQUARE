@@ -1,10 +1,7 @@
-import React, { ReactElement } from 'react';
-import { View, Switch } from 'react-native';
+import { ReactElement } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components';
-import Label from '../text/Label';
-import CustomView from '../view/CustomView';
 import sizes from '../../../theme/sizes';
-import colors from '../../../theme/colors';
 
 interface SwitchProps {
   children?: Array<ReactElement> | ReactElement;
@@ -31,40 +28,4 @@ const StyledSwitchView = styled(View)`
   margin-left: ${({ ml = 0 }: SwitchProps): number => Number(ml) * sizes.baseMargin};
 `;
 
-const StyledSwitch = styled(Switch)`
-  align-self: flex-end;
-`;
-
-const CustomSwitch = ({ fontSize, text, ...props }: SwitchProps): ReactElement => (
-  <CustomView
-    mt
-    mb
-    ml={3}
-    mr={3}
-    color={colors.CARD_PRIMARY}
-    borderRadius={sizes.baseBorderRadius}
-  >
-    <StyledSwitchView {...props}>
-      <CustomView
-        ml
-        mr
-        flex={4}
-      >
-        <Label
-          text={text}
-          fontSize={fontSize}
-          color={colors.LABEL_SECONDARY}
-        />
-      </CustomView>
-      <CustomView
-        ml
-        mr
-        flex={2}
-      >
-        <StyledSwitch />
-      </CustomView>
-    </StyledSwitchView>
-  </CustomView>
-);
-
-export default CustomSwitch;
+export default StyledSwitchView;

@@ -7,5 +7,9 @@
     "colors": "Colors",
     "figures": "Figures",
     "numbers": "Numbers"
+  },
+  "sliderLabels": {
+    "commandsAmount": "Amount of commands: {{amount}}",
+    "playbackIntervals": "Playback intervals: {{speed}}"
   }
 }
