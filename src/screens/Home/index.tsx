@@ -20,14 +20,13 @@ const Home = (): ReactElement => (
         fontSize={fonts.HEADER_LABEL}
       />
       <CustomView>
-        <Card flex={4} color={colors.CONTENT_PRIMARY} mt={2} mb ml={3} mr={3}>
+        <Card flex={4} color={colors.CARD_SECONDARY} mt={2} mb ml={3} mr={3}>
           <CustomSwitch
             mt
             mb
             mr
             ml
-            color="red"
-            text={i18n.t('switchLabels.color')}
+            text={i18n.t('switchLabels.colors')}
             fontSize={fonts.SWITCH_LABEL}
           />
           <CustomSwitch
@@ -35,8 +34,7 @@ const Home = (): ReactElement => (
             mb
             mr
             ml
-            color="red"
-            text={i18n.t('switchLabels.figure')}
+            text={i18n.t('switchLabels.figures')}
             fontSize={fonts.SWITCH_LABEL}
           />
           <CustomSwitch
@@ -44,14 +42,13 @@ const Home = (): ReactElement => (
             mb
             mr
             ml
-            color="red"
-            text={i18n.t('switchLabels.number')}
+            text={i18n.t('switchLabels.numbers')}
             fontSize={fonts.SWITCH_LABEL}
           />
         </Card>
-        <Card flex={2} color={colors.CONTENT_PRIMARY} mt mb ml={3} mr={3} />
-        <Card flex={2} color={colors.CONTENT_PRIMARY} mt mb ml={3} mr={3} />
-        <Card flex={1} color={colors.CONTENT_PRIMARY} mt mb={2} ml={3} mr={3} />
+        <Card flex={2} color={colors.CARD_SECONDARY} mt mb ml={3} mr={3} />
+        <Card flex={2} color={colors.CARD_SECONDARY} mt mb ml={3} mr={3} />
+        <Card flex={1} color={colors.CARD_SECONDARY} mt mb={2} ml={3} mr={3} />
       </CustomView>
     </Content>
   </Container>

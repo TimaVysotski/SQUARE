@@ -4,8 +4,8 @@
     "title": "Home"
   },
   "switchLabels": {
-    "color": "Color",
-    "figure": "Figure",
-    "number": "Number"
+    "colors": "Colors",
+    "figures": "Figures",
+    "numbers": "Numbers"
   }
 }
