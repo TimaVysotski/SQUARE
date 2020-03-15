@@ -13,6 +13,8 @@
     "playbackIntervals": "Playback intervals: {{speed}}"
   },
   "button": {
-    "play": "Play"
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop"
   }
 }

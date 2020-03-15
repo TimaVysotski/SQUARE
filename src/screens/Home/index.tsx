@@ -8,7 +8,7 @@ import Card from '../../container/components/view/Card';
 import Container from '../../container/components/view/Container';
 import Content from '../../container/components/view/Content';
 import CustomView from '../../container/components/view/CustomView';
-import Button from '../../container/components/button';
+import Button, { RowBotton } from '../../container/components/button';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import sizes from '../../theme/sizes';
@@ -19,6 +19,7 @@ const Home = (): ReactElement => {
   const [isNumbers, setIsNumbers] = useState(false);
   const [commandsAmount, setCommandsAmount] = useState(1);
   const [playbackIntervals, setPlaybackIntervals] = useState(1);
+  const [isPlay, setIsPlay] = useState(false);
 
   return (
     <Container>
@@ -38,6 +39,7 @@ const Home = (): ReactElement => {
                 ml={3}
                 mr={3}
                 color={colors.CARD_PRIMARY}
+                shadow={colors.SHADOW}
                 borderRadius={sizes.baseBorderRadius}
               >
                 <StyledSwitchView
@@ -76,6 +78,7 @@ const Home = (): ReactElement => {
                 ml={3}
                 mr={3}
                 color={colors.CARD_PRIMARY}
+                shadow={colors.SHADOW}
                 borderRadius={sizes.baseBorderRadius}
               >
                 <StyledSwitchView
@@ -114,6 +117,7 @@ const Home = (): ReactElement => {
                 ml={3}
                 mr={3}
                 color={colors.CARD_PRIMARY}
+                shadow={colors.SHADOW}
                 borderRadius={sizes.baseBorderRadius}
               >
                 <StyledSwitchView
@@ -162,6 +166,7 @@ const Home = (): ReactElement => {
               ml={3}
               mr={3}
               color={colors.CARD_PRIMARY}
+              shadow={colors.SHADOW}
               borderRadius={sizes.baseBorderRadius}
             >
               <CustomView
@@ -203,6 +208,7 @@ const Home = (): ReactElement => {
               ml={3}
               mr={3}
               color={colors.CARD_PRIMARY}
+              shadow={colors.SHADOW}
               borderRadius={sizes.baseBorderRadius}
             >
               <CustomView
@@ -238,13 +244,45 @@ const Home = (): ReactElement => {
             flex={1}
             color={colors.CARD_SECONDARY}
           >
-            <CustomView mt mb>
-              <Button
-                text={i18n.t('button.play')}
-                color={colors.LABEL_SECONDARY}
-                fontSize={fonts.BUTTON_LABEL}
-              />
-            </CustomView>
+            {isPlay
+              ? (
+                <CustomView
+                  mt
+                  mb
+                  shadow={colors.SHADOW}
+                  flexDirection="row"
+                >
+                  <RowBotton
+                    text={i18n.t('button.pause')}
+                    buttonColor={colors.BUTTON_PAUSE}
+                    onPress={(): void => setIsPlay(!isPlay)}
+                    color={colors.LABEL_SECONDARY}
+                    fontSize={fonts.BUTTON_LABEL}
+                  />
+                  <RowBotton
+                    text={i18n.t('button.stop')}
+                    buttonColor={colors.BUTTON_PAUSE}
+                    onPress={(): void => setIsPlay(!isPlay)}
+                    color={colors.LABEL_SECONDARY}
+                    fontSize={fonts.BUTTON_LABEL}
+                  />
+                </CustomView>
+              )
+              : (
+                <CustomView
+                  mt
+                  mb
+                  shadow={colors.SHADOW}
+                >
+                  <Button
+                    text={i18n.t('button.play')}
+                    buttonColor={colors.BUTTON_PLAY}
+                    onPress={(): void => setIsPlay(!isPlay)}
+                    color={colors.LABEL_SECONDARY}
+                    fontSize={fonts.BUTTON_LABEL}
+                  />
+                </CustomView>
+              )}
           </Card>
         </CustomView>
       </Content>

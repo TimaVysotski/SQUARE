@@ -2,12 +2,14 @@ import React, { ReactElement } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components';
 import sizes from '../../../theme/sizes';
+import colors from '../../../theme/colors';
 
 interface CustomViewProps {
   children?: Array<ReactElement> | ReactElement;
   flexDirection?: string;
   borderRadius?: number | string;
   alignItems?: string;
+  shadow?: string;
   flex?: number | boolean;
   color?: string;
   mt?: number | boolean;
@@ -18,7 +20,9 @@ interface CustomViewProps {
 
 const StyledCustomView = styled(View)`
   justify-content: center;
+  elevation: 5;
   flex: ${({ flex = 1 }: CustomViewProps): number => Number(flex)};
+  box-shadow: ${({ shadow = colors.SHADOW_DEFAULT }: CustomViewProps): string => shadow};
   ${({ flexDirection }: CustomViewProps): string => `flex-direction: ${flexDirection}`};
   ${({ alignItems }: CustomViewProps): string => `align-items: ${alignItems}`};
   ${({ borderRadius }: CustomViewProps): string => `border-radius: ${borderRadius}`};
