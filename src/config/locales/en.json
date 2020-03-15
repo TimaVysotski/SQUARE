@@ -2,5 +2,19 @@
   "appName": "SQUARE",
   "home": {
     "title": "Home"
+  },
+  "switchLabels": {
+    "colors": "Colors",
+    "figures": "Figures",
+    "numbers": "Numbers"
+  },
+  "sliderLabels": {
+    "commandsAmount": "Amount of commands: {{amount}}",
+    "playbackIntervals": "Playback intervals: {{speed}}"
+  },
+  "button": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop"
   }
 }
