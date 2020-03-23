@@ -1,0 +1,24 @@
+{
+  "appName": "SQUARE",
+  "home": {
+    "title": "Home"
+  },
+  "switchLabels": {
+    "colors": "Цвета",
+    "figures": "Фигуры",
+    "numbers": "Числа"
+  },
+  "sliderLabels": {
+    "commandsAmount": "Число команд: {{amount}}",
+    "playbackIntervals": "Интервал: {{speed}} секунд"
+  },
+  "button": {
+    "play": "Старт",
+    "pause": "Пауза",
+    "stop": "Стоп"
+  },
+  "alert": {
+    "error": "Ошибка",
+    "categoryErrorDescription": "Упссс!!! \nЧто-то не так!!!\nВыбери хотя бы 1 категорию."
+  }
+}
