@@ -39,6 +39,8 @@ target 'SQUARE' do
 
   pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
 
+  pod 'RNSound', :path => '../node_modules/react-native-sound'
+
   target 'SQUARETests' do
     inherit! :search_paths
     # Pods for testing
