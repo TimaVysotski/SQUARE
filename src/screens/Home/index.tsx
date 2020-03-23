@@ -12,6 +12,8 @@ import Button, { RowBotton } from '../../container/components/button';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import sizes from '../../theme/sizes';
+import startPlayCommands from '../../services/player';
+import categoryErrorDescription from '../../components/alerts/error';
 
 const Home = (): ReactElement => {
   const [isColores, setIsColores] = useState(true);
@@ -20,6 +22,14 @@ const Home = (): ReactElement => {
   const [commandsAmount, setCommandsAmount] = useState(1);
   const [playbackIntervals, setPlaybackIntervals] = useState(1);
   const [isPlay, setIsPlay] = useState(false);
+
+  const onPlay = (): void => {
+    if (!isColores && !isFigures && !isNumbers) {
+      categoryErrorDescription();
+    } else {
+      startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+    }
+  };
 
   return (
     <Container>
@@ -277,7 +287,7 @@ const Home = (): ReactElement => {
                   <Button
                     text={i18n.t('button.play')}
                     buttonColor={colors.BUTTON_PLAY}
-                    onPress={(): void => setIsPlay(!isPlay)}
+                    onPress={onPlay}
                     color={colors.LABEL_SECONDARY}
                     fontSize={fonts.BUTTON_LABEL}
                   />

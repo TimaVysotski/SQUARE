@@ -16,5 +16,9 @@
     "play": "Play",
     "pause": "Pause",
     "stop": "Stop"
+  },
+  "alert": {
+    "error": "Error",
+    "categoryErrorDescription": "Whoops!!! \nSome thing go wrong!!!\nChoose at list one category."
   }
 }
