@@ -27,12 +27,13 @@ const Home = (): ReactElement => {
     if (!isColores && !isFigures && !isNumbers) {
       categoryErrorDescription();
     } else {
-      (function loops() {
-        setTimeout(function () {
+      startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+      (function loops(): void {
+        setTimeout(() => {
           startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
           loops();
         }, 1000);
-      })();
+      }());
     }
   };
 
