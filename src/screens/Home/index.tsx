@@ -27,7 +27,12 @@ const Home = (): ReactElement => {
     if (!isColores && !isFigures && !isNumbers) {
       categoryErrorDescription();
     } else {
-      startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+      (function loops() {
+        setTimeout(function () {
+          startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+          loops();
+        }, 1000);
+      })();
     }
   };
 
