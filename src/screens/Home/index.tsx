@@ -36,7 +36,7 @@ const Home = (): ReactElement => {
       categoryErrorDescription();
     } else {
       playStore.setPlay(true);
-      const timeOut = configureTimeOut(commandsAmount);
+      const timeOut = configureTimeOut(commandsAmount, playbackIntervals);
       startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
       (function loops(): void {
         if (playStore.getPlay) {

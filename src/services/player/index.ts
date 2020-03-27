@@ -1,5 +1,15 @@
 import sounds from './commands';
 
+const time = 1000;
+
+const setTimeOutInterval = (interval: number): number => {
+  let result = 0;
+  if (interval > 1) {
+    result = time * (interval - 1);
+  }
+  return result;
+};
+
 const getRandomSound = (min: number, max: number): number => (
   Math.floor(Math.random() * (max - min + 1)) + min
 );
@@ -23,27 +33,28 @@ const configureElementArray = (isColores: boolean, isFigures: boolean, isNumbers
   return elements;
 };
 
-export const configureTimeOut = (amount: number): number => {
+export const configureTimeOut = (amount: number, interval: number): number => {
   let timeOut;
+  const pauseInterval = setTimeOutInterval(interval);
   switch (amount) {
     case 1: {
-      timeOut = 1000;
+      timeOut = time + pauseInterval;
       break;
     }
     case 2: {
-      timeOut = 2000;
+      timeOut = 2 * time + pauseInterval;
       break;
     }
     case 3: {
-      timeOut = 3000;
+      timeOut = 3 * time + pauseInterval;
       break;
     }
     case 4: {
-      timeOut = 4000;
+      timeOut = 4 * time + pauseInterval;
       break;
     }
     default: {
-      timeOut = 1000;
+      timeOut = time + pauseInterval;
     }
   }
   return timeOut;
