@@ -23,6 +23,32 @@ const configureElementArray = (isColores: boolean, isFigures: boolean, isNumbers
   return elements;
 };
 
+export const configureTimeOut = (amount: number): number => {
+  let timeOut;
+  switch (amount) {
+    case 1: {
+      timeOut = 1000;
+      break;
+    }
+    case 2: {
+      timeOut = 2000;
+      break;
+    }
+    case 3: {
+      timeOut = 3000;
+      break;
+    }
+    case 4: {
+      timeOut = 4000;
+      break;
+    }
+    default: {
+      timeOut = 1000;
+    }
+  }
+  return timeOut;
+};
+
 const startPlayCommands = (amount: number, isColores: boolean, isFigures: boolean, isNumbers: boolean): void => {
   const { colors, figures, numbers } = sounds;
   const elements = configureElementArray(isColores, isFigures, isNumbers);

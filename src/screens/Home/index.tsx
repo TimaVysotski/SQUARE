@@ -12,10 +12,12 @@ import Button, { RowBotton } from '../../container/components/button';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import sizes from '../../theme/sizes';
-import startPlayCommands from '../../services/player';
+import startPlayCommands, { configureTimeOut } from '../../services/player';
 import categoryErrorDescription from '../../components/alerts/error';
+import { useStore } from '../../store';
 
 const Home = (): ReactElement => {
+  const { playStore } = useStore();
   const [isColores, setIsColores] = useState(true);
   const [isFigures, setIsFigures] = useState(false);
   const [isNumbers, setIsNumbers] = useState(false);
@@ -23,16 +25,28 @@ const Home = (): ReactElement => {
   const [playbackIntervals, setPlaybackIntervals] = useState(1);
   const [isPlay, setIsPlay] = useState(false);
 
+  const onStop = (): void => {
+    setIsPlay(!isPlay);
+    playStore.setPlay(false);
+  };
+
   const onPlay = (): void => {
+    setIsPlay(!isPlay);
     if (!isColores && !isFigures && !isNumbers) {
       categoryErrorDescription();
     } else {
+      playStore.setPlay(true);
+      const timeOut = configureTimeOut(commandsAmount);
       startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
       (function loops(): void {
-        setTimeout(() => {
-          startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
-          loops();
-        }, 1000);
+        if (playStore.getPlay) {
+          setTimeout(() => {
+            if (playStore.getPlay) {
+              startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+            }
+            loops();
+          }, timeOut);
+        }
       }());
     }
   };
@@ -271,14 +285,14 @@ const Home = (): ReactElement => {
                   <RowBotton
                     text={i18n.t('button.pause')}
                     buttonColor={colors.BUTTON_PAUSE}
-                    onPress={(): void => setIsPlay(!isPlay)}
+                    onPress={onStop}
                     color={colors.LABEL_SECONDARY}
                     fontSize={fonts.BUTTON_LABEL}
                   />
                   <RowBotton
                     text={i18n.t('button.stop')}
                     buttonColor={colors.BUTTON_PAUSE}
-                    onPress={(): void => setIsPlay(!isPlay)}
+                    onPress={onStop}
                     color={colors.LABEL_SECONDARY}
                     fontSize={fonts.BUTTON_LABEL}
                   />
