@@ -1,33 +1,53 @@
 import Slider from '@react-native-community/slider';
 import React, { ReactElement, useState } from 'react';
 import { Switch } from 'react-native';
+import categoryErrorDescription from '../../components/alerts/error';
 import i18n from '../../config';
+import Button from '../../container/components/button';
 import StyledSwitchView from '../../container/components/input/Switch';
 import Label from '../../container/components/text/Label';
 import Card from '../../container/components/view/Card';
 import Container from '../../container/components/view/Container';
 import Content from '../../container/components/view/Content';
 import CustomView from '../../container/components/view/CustomView';
-import Button, { RowBotton } from '../../container/components/button';
+import startPlayCommands, { configureTimeOut } from '../../services/player';
+import { useStore } from '../../store';
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 import sizes from '../../theme/sizes';
-import startPlayCommands from '../../services/player';
-import categoryErrorDescription from '../../components/alerts/error';
 
 const Home = (): ReactElement => {
+  const { playStore } = useStore();
   const [isColores, setIsColores] = useState(true);
   const [isFigures, setIsFigures] = useState(false);
   const [isNumbers, setIsNumbers] = useState(false);
   const [commandsAmount, setCommandsAmount] = useState(1);
-  const [playbackIntervals, setPlaybackIntervals] = useState(1);
+  const [playbackIntervals, setPlaybackIntervals] = useState(0.5);
   const [isPlay, setIsPlay] = useState(false);
 
+  const onStop = (): void => {
+    setIsPlay(!isPlay);
+    playStore.setPlay(false);
+  };
+
   const onPlay = (): void => {
+    setIsPlay(!isPlay);
     if (!isColores && !isFigures && !isNumbers) {
       categoryErrorDescription();
     } else {
+      playStore.setPlay(true);
+      const timeOut = configureTimeOut(commandsAmount, playbackIntervals);
       startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+      (function loops(): void {
+        if (playStore.getPlay) {
+          setTimeout(() => {
+            if (playStore.getPlay) {
+              startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
+            }
+            loops();
+          }, timeOut);
+        }
+      }());
     }
   };
 
@@ -226,7 +246,7 @@ const Home = (): ReactElement => {
                 ml={2}
               >
                 <Label
-                  text={i18n.t('sliderLabels.playbackIntervals', { speed: playbackIntervals })}
+                  text={i18n.t('sliderLabels.playbackIntervals', { speed: playbackIntervals.toFixed(2) })}
                   fontSize={fonts.SLIDER_LABEL}
                   textAlign="center"
                   color={colors.LABEL_SECONDARY}
@@ -239,9 +259,9 @@ const Home = (): ReactElement => {
               >
                 <Slider
                   onValueChange={(value): void => setPlaybackIntervals(value)}
-                  minimumValue={1}
-                  maximumValue={10}
-                  step={1}
+                  minimumValue={0.5}
+                  maximumValue={5}
+                  step={0.5}
                 />
               </CustomView>
             </CustomView>
@@ -260,19 +280,11 @@ const Home = (): ReactElement => {
                   mt
                   mb
                   shadow={colors.SHADOW}
-                  flexDirection="row"
                 >
-                  <RowBotton
-                    text={i18n.t('button.pause')}
-                    buttonColor={colors.BUTTON_PAUSE}
-                    onPress={(): void => setIsPlay(!isPlay)}
-                    color={colors.LABEL_SECONDARY}
-                    fontSize={fonts.BUTTON_LABEL}
-                  />
-                  <RowBotton
+                  <Button
                     text={i18n.t('button.stop')}
                     buttonColor={colors.BUTTON_PAUSE}
-                    onPress={(): void => setIsPlay(!isPlay)}
+                    onPress={onStop}
                     color={colors.LABEL_SECONDARY}
                     fontSize={fonts.BUTTON_LABEL}
                   />
