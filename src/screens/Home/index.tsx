@@ -31,10 +31,10 @@ const Home = (): ReactElement => {
   };
 
   const onPlay = (): void => {
-    setIsPlay(!isPlay);
     if (!isColores && !isFigures && !isNumbers) {
       categoryErrorDescription();
     } else {
+      setIsPlay(!isPlay);
       playStore.setPlay(true);
       const timeOut = configureTimeOut(commandsAmount, playbackIntervals);
       startPlayCommands(commandsAmount, isColores, isFigures, isNumbers);
