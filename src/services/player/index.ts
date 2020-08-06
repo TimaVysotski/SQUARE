@@ -1,6 +1,6 @@
 import sounds from './commands';
 
-const time = 1000;
+const time = 1300;
 
 const setTimeOutInterval = (interval: number): number => {
   let result = 0;
