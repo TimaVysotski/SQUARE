@@ -61,3 +61,5 @@ buck-out/
 .git1
 # CocoaPods
 /ios/Pods/
+
+release/
